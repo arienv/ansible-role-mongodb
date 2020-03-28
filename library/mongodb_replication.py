@@ -156,7 +156,7 @@ host_type:
   type: string
   sample: "replica"
 '''
-importconfigparser
+import configparser
 import ssl as ssl_lib
 import time
 from datetime import datetime as dtdatetime
