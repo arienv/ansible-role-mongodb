@@ -18,8 +18,12 @@ cat << EOF > ansible.cfg
 [defaults]
 pipelining = True
 strategy = mitogen_linear
-strategy_plugins = /home/travis/virtualenv/python3.6.9/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
+strategy_plugins = $(find /home -name strategy -type d)
+# /home/travis/virtualenv/python3.6/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
 EOF
+
+#test
+cat ansible.cfg
 
 # Pull docker image or build it
 if [ -f tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} ]
