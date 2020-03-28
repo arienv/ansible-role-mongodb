@@ -14,12 +14,13 @@ set -o pipefail
 # Latest Ansible install
 pip install docker ansible mitogen
 
+PYTHON_VERSION=$(python --version | sed -e 's/Python //')
+
 cat << EOF > ansible.cfg
 [defaults]
 pipelining = True
 strategy = mitogen_linear
-strategy_plugins = $(find /home -name strategy -type d)
-# /home/travis/virtualenv/python3.6/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
+strategy_plugins = /home/travis/virtualenv/$PYTHON_VERSION/lib/$PYTHON_VERSION/site-packages/ansible_mitogen/plugins/strategy
 EOF
 
 #test
