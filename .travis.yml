@@ -154,10 +154,10 @@ services:
   - docker
 
 install:
-  - bash tests/scripts/before_install.sh
+  # bash tests/scripts/before_install.sh
+  - pip install docker ansible mitogen
   - pwd
-  - find . -name strategy -type d
-  - ls -la mitogen
+  - find .
 
 script:
   - bash tests/scripts/test.sh
