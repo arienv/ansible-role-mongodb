@@ -1,12 +1,12 @@
 [local]
-localhost	ansible_connection=local ansible_python_interpreter=python
+localhost	ansible_connection=local ansible_python_interpreter=python3
 
 [mongo_master]
-mongo1		ansible_connection=docker ansible_user=root ansible_python_interpreter=python
+mongo1		ansible_connection=docker ansible_user=root ansible_python_interpreter=python3
 
 [mongo_replicas]
-mongo2		ansible_connection=docker ansible_user=root ansible_python_interpreter=python
-mongo3		ansible_connection=docker ansible_user=root ansible_python_interpreter=python
+mongo2		ansible_connection=docker ansible_user=root ansible_python_interpreter=python3
+mongo3		ansible_connection=docker ansible_user=root ansible_python_interpreter=python3
 
 [mongo:children]
 mongo_master
