@@ -155,6 +155,8 @@ services:
 
 install:
   - bash tests/scripts/before_install.sh
+  - ls -la ansible_mitogen
+  - ls -la mitogen
 
 script:
   - bash tests/scripts/test.sh

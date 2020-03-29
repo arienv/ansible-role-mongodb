@@ -27,8 +27,8 @@ strategy_plugins = ${ANSIBLE_STRATEGY_PLUGINS}
 EOF
 
 pwd
+echo ${MITOGEN_LOC}
 ls -l ${MITOGEN_LOC}
-ls -l ${ANSIBLE_STRATEGY_PLUGINS}
 
 
 # Pull docker image or build it
