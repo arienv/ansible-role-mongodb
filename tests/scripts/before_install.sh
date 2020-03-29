@@ -15,11 +15,13 @@ set -o pipefail
 pip install docker ansible mitogen
 
 MITOGEN_LOC=$(pip show mitogen | awk '/Location: /{print $2}')
+export ANSIBLE_STRATEGY_PLUGINS=${MITOGEN_LOC}/strategy
+
 cat << EOF > ansible.cfg
 [defaults]
 pipelining = True
 strategy = mitogen_linear
-strategy_plugins = $MITOGEN_LOC/plugins/strategy
+strategy_plugins = ${ANSIBLE_STRATEGY_PLUGINS}
 
 EOF
 
