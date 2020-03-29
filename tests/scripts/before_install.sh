@@ -11,21 +11,19 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
+# Latest Ansible install
+pip install docker ansible mitogen
 
-PYTHON_VERSION=$(python -V 2>&1 | sed -e 's/Python //')
-
-
+MITOGEN_LOC=$(pip show mitogen | grep Location)
 cat << EOF > ansible.cfg
 [defaults]
 pipelining = True
 strategy = mitogen_linear
-strategy_plugins = /home/travis/virtualenv/$PYTHON_VERSION/lib/$PYTHON_VERSION/site-packages/ansible_mitogen/plugins/strategy
+strategy_plugins = $MITOGEN_LOC/plugins/strategy
 
 EOF
 
-# Latest Ansible install
-pip install docker ansible mitogen
-
+cat ansible.cfg
 
 # Pull docker image or build it
 if [ -f tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} ]
