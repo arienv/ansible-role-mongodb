@@ -5,7 +5,7 @@
   become: no
   gather_facts: no
   tasks:
-    - name: Copy environmnet file
+    - name: Copy environment file
       copy:
         src: etc/environment
         dest: /tmp/environment
