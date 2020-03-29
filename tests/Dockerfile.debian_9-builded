@@ -2,8 +2,8 @@ FROM debian:9
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && \
-    apt install --yes python-minimal systemd gnupg python-pip
+RUN apt-get update && \
+    apt-get install --yes python3-minimal systemd gnupg python3-pip
 
 RUN cd /lib/systemd/system/sysinit.target.wants/ && \
 		ls | grep -v systemd-tmpfiles-setup.service | xargs rm -f && \

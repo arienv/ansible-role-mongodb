@@ -2,6 +2,6 @@ FROM debian:8
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && \
-    apt install --yes python-minimal python-pip && \
+RUN apt-get update && \
+    apt-get install --yes python3-minimal python3-pip && \
     rm /lib/systemd/system/getty@.service

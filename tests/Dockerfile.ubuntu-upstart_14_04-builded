@@ -3,5 +3,5 @@ FROM ubuntu-upstart
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install --yes python-minimal python-pip python-dev iproute2
+    apt-get install --yes python3-minimal python3-pip python3-dev iproute2
 
