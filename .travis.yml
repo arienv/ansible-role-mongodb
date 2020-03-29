@@ -158,8 +158,6 @@ services:
 install:
   # bash tests/scripts/before_install.sh
   - pip install docker ansible mitogen
-  - pwd
-  - find /home/travis
 
 script:
   - bash tests/scripts/test.sh
