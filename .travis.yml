@@ -156,7 +156,7 @@ services:
 before_install:
   # bash tests/scripts/before_install.sh
   #- pip install docker ansible mitogen
-  - pip install docker ansible
+  - pip install docker ansible configparser
   # export ANSIBLE_STRATEGY_PLUGINS=/home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
   # export ANSIBLE_STRATEGY=mitogen_linear
   # "export ANSIBLE_STRATEGY_PLUGINS=$(pip show mitogen | awk '/Location: /{print $2}')/ansible_mitogen/plugins/strategy"
