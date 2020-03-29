@@ -25,7 +25,7 @@ strategy_plugins = ${ANSIBLE_STRATEGY_PLUGINS}
 
 EOF
 
-cat ansible.cfg
+ls ${ANSIBLE_STRATEGY_PLUGINS}
 
 # Pull docker image or build it
 if [ -f tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} ]
