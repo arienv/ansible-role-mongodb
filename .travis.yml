@@ -158,6 +158,7 @@ services:
 install:
   # bash tests/scripts/before_install.sh
   - pip install docker ansible mitogen
+  - ln -s ${PWD} tests/greendayonfire.mongodb
 
 script:
   - bash tests/scripts/test.sh
