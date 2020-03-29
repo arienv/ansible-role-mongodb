@@ -14,7 +14,7 @@ set -o pipefail
 # Latest Ansible install
 pip install docker ansible mitogen
 
-MITOGEN_LOC=$(pip show mitogen | grep Location)
+MITOGEN_LOC=$(pip show mitogen | awk '/Location: /{print $2}')
 cat << EOF > ansible.cfg
 [defaults]
 pipelining = True
