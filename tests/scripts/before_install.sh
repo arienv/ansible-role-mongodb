@@ -16,6 +16,7 @@ pip install docker ansible mitogen
 
 MITOGEN_LOC=$(pip show mitogen | awk '/Location: /{print $2}')
 export ANSIBLE_STRATEGY_PLUGINS=${MITOGEN_LOC}/strategy
+export ANSIBLE_STRATEGY=mitogen_linear
 
 cat << EOF > ansible.cfg
 [defaults]
@@ -25,7 +26,10 @@ strategy_plugins = ${ANSIBLE_STRATEGY_PLUGINS}
 
 EOF
 
-ls ${ANSIBLE_STRATEGY_PLUGINS}
+pwd
+ls -l ${MITOGEN_LOC}
+ls -l ${ANSIBLE_STRATEGY_PLUGINS}
+
 
 # Pull docker image or build it
 if [ -f tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} ]
