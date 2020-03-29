@@ -11,7 +11,9 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
-PYTHON_VERSION=$(python --version | sed -e 's/Python //')
+
+PYTHON_VERSION=$(python -V 2>&1 | sed -e 's/Python //')
+
 
 cat << EOF > ansible.cfg
 [defaults]
@@ -21,11 +23,6 @@ strategy_plugins = /home/travis/virtualenv/$PYTHON_VERSION/lib/$PYTHON_VERSION/s
 
 EOF
 
-echo "-----------------------------"
-#test
-cat ansible.cfg
-
-echo "-----------------------------"
 # Latest Ansible install
 pip install docker ansible mitogen
 
