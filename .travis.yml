@@ -12,8 +12,6 @@ env:
     MONGODB_VERSION=4.2
     MONGODB_PACKAGE=mongodb-org
     DOCKER_PRIVILEGED=true 
-    ANSIBLE_STRATEGY_PLUGINS=/home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
-    ANSIBLE_STRATEGY=mitogen_linear
 #  - >
 #    DISTRIBUTION=ubuntu
 #    DIST_VERSION=18_04-builded
@@ -155,9 +153,15 @@ env:
 services:
   - docker
 
-install:
+before_install:
   # bash tests/scripts/before_install.sh
   - pip install docker ansible mitogen
+  - pip show mitogen | awk '/Location: /{print $2}'
+    export ANSIBLE_STRATEGY_PLUGINS=/home/travis/virtualenv/python3.6.3/lib/python3.6/site-packages/ansible_mitogen/plugins/strategy
+    export ANSIBLE_STRATEGY=mitogen_linear
+
+install:
+  - if [ -f tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} ]; then docker build --rm=true --file=tests/Dockerfile.${DISTRIBUTION}_${DIST_VERSION} --tag ${DISTRIBUTION}:${DIST_VERSION} tests; else docker pull ${DISTRIBUTION}:${DIST_VERSION}; fi
   - ln -s ${PWD} tests/greendayonfire.mongodb
 
 script:
