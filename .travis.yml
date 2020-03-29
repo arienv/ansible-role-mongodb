@@ -155,7 +155,8 @@ services:
 
 install:
   - bash tests/scripts/before_install.sh
-  - ls -la ansible_mitogen
+  - pwd
+  - find . -name strategy -type d
   - ls -la mitogen
 
 script:
